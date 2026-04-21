@@ -1,0 +1,146 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Webmaster Alpha: All-in-One Utility Suite",
+    "description": "Enterprise-grade API suite for URL management, bespoke QR generation, and professional website screenshots. Features advanced link security and bulk processing capabilities.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Webmaster Support",
+      "email": "support@webmaster-alpha.com"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://your-deployment-domain.com/api",
+      "description": "Production Server"
+    }
+  ],
+  "tags": [
+    { "name": "Link Management", "description": "Next-gen URL shortening and security" },
+    { "name": "Visual Assets", "description": "QR and screenshot generation engines" }
+  ],
+  "paths": {
+    "/links/create": {
+      "post": {
+        "tags": ["Link Management"],
+        "summary": "Create Secure Short Link",
+        "description": "Generate high-performance short links with enterprise security layers (Password, Expiry, Max Clicks).",
+        "operationId": "createLink",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["originalUrl"],
+                "properties": {
+                  "originalUrl": { "type": "string", "example": "https://google.com" },
+                  "type": { "type": "string", "enum": ["static", "dynamic"], "default": "static" },
+                  "password": { "type": "string", "description": "Optional view password" },
+                  "expiresAt": { "type": "string", "format": "date-time", "description": "ISO format date string" },
+                  "maxClicks": { "type": "integer", "example": 100 }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "shortId": { "type": "string" },
+                    "shortUrl": { "type": "string" },
+                    "qrDataUrl": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/qr": {
+      "post": {
+        "tags": ["Visual Assets"],
+        "summary": "Bespoke QR Generator",
+        "description": "Generates custom QR codes with adjustable colors and transparency.",
+        "operationId": "generateQR",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["text"],
+                "properties": {
+                  "text": { "type": "string", "example": "https://webmaster-alpha.app" },
+                  "color": { "type": "string", "default": "#ffffff" },
+                  "bgColor": { "type": "string", "default": "transparent" },
+                  "margin": { "type": "integer", "default": 2 }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "qrDataUrl": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/screenshot": {
+      "post": {
+        "tags": ["Visual Assets"],
+        "summary": "High-Res Website Snapshot",
+        "description": "Captures a live preview of any website via professional proxy engine.",
+        "operationId": "captureScreenshot",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["url"],
+                "properties": {
+                  "url": { "type": "string", "example": "naver.com" },
+                  "width": { "type": "integer", "default": 1280 },
+                  "height": { "type": "integer", "default": 720 }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "screenshotUrl": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "users": [
+    {
+      "email": "test@example.com",
+      "tier": "Pro",
+      "credits": 1000,
+      "id": "32wc3d",
+      "createdAt": "2026-04-20T15:15:39.032Z"
+    },
+    {
+      "email": "tester@example.com",
+      "tier": "Basic",
+      "credits": 10,
+      "id": "rfvwjt",
+      "createdAt": "2026-04-20T15:18:26.581Z"
+    },
+    {
+      "email": "test@pro.com",
+      "tier": "Basic",
+      "credits": 10,
+      "id": "t1rpn",
+      "createdAt": "2026-04-20T15:24:25.337Z"
+    },
+    {
+      "email": "unique_user_99@test.com",
+      "tier": "Pro",
+      "credits": 1000,
+      "id": "yql3pm",
+      "createdAt": "2026-04-20T15:26:03.063Z"
+    }
+  ]
+}
