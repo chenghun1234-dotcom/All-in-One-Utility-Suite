@@ -11,8 +11,8 @@
   },
   "servers": [
     {
-      "url": "https://your-deployment-domain.com/api",
-      "description": "Production Server"
+      "url": "https://all-in-one-utility-suite.vercel.app/api",
+      "description": "Live Vercel Production Server"
     }
   ],
   "tags": [
